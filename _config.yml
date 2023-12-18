@@ -16,7 +16,7 @@ timezone: Asia/Calcutta
 
 title: Kalakaar Ketul # the main title
 
-tagline: banawati duniya ka janwar # it will display as the sub-title
+tagline: Banawati Duniya Ka Janwar # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
@@ -41,8 +41,8 @@ social:
     - https://twitter.com/ketul94patel # change to your twitter homepage
     - https://github.com/ketulpatel94 # change to your github homepage
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.facebook.com/ketul.patel.94617
+    - https://www.linkedin.com/in/ketulpatel94
 
 google_site_verification: # fill in to your verification string
 
@@ -63,7 +63,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: # [light|dark]
+theme_mode: dark
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
