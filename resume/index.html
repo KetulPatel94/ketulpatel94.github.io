@@ -475,6 +475,141 @@
         break-before: page;
       }
     }
+
+    /* Mobile Responsiveness styling */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      .resume-container {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Toolbar */
+      .toolbar {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+        padding: 12px 16px;
+      }
+      .toolbar-title {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .toolbar-title span {
+        margin: 0 !important;
+      }
+      .toolbar-title span:nth-child(2) {
+        display: none; /* Hide separator '|' */
+      }
+
+      /* Header */
+      .header h1 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.8rem;
+      }
+      .contact-info .bullet-separator {
+        display: none;
+      }
+
+      /* Experience Items */
+      .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .exp-subheader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 10px;
+      }
+      .exp-location, .exp-date {
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--text-muted);
+      }
+
+      /* Master Thesis */
+      .thesis-header {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .thesis-title {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+      .thesis-date {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      /* Education Section */
+      .edu-table, .edu-table thead, .edu-table tbody, .edu-table tr, .edu-table th, .edu-table td {
+        display: block;
+        width: 100%;
+      }
+      .edu-table thead {
+        display: none;
+      }
+      .edu-table tr {
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 0;
+      }
+      .edu-table tr:last-child {
+        border-bottom: none;
+      }
+      .edu-table td {
+        padding: 4px 0;
+        border-bottom: none;
+        text-align: left;
+      }
+      .edu-degree {
+        font-size: 0.95rem;
+        color: var(--accent);
+      }
+      .edu-year {
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      /* Skills Section */
+      .skills-table, .skills-table tbody, .skills-table tr, .skills-table td {
+        display: block;
+        width: 100%;
+      }
+      .skills-table tr {
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 0;
+      }
+      .skills-table tr:last-child {
+        border-bottom: none;
+      }
+      .skills-table td {
+        padding: 4px 0;
+        border-bottom: none;
+      }
+      .skill-cat {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+        color: var(--accent);
+        width: 100%;
+      }
+      .skill-items {
+        width: 100%;
+      }
+    }
   </style>
   <script>
     // Run immediately to avoid white flash on load
