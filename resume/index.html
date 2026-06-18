@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ketul Patel - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f1f5f9; /* Slate 100 - modern light grey background */
+      --card-bg: #ffffff;  /* Pure white resume card space */
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --accent: #1a73e8; /* Blue accent matching PDF headings */
+      --accent-hover: #1557b0;
+      --border-color: #cbd5e1; /* Slate 300 - distinct border for clear contrast */
+      --summary-bg: #ffffff;
+      --summary-border: #1a73e8;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #60a5fa;
+      --border-color: #334155;
+      --summary-bg: #1e293b;
+      --summary-border: #3b82f6;
+    }
+
+    [data-theme="dark"] .company-logo {
+      filter: invert(1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 30px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Interactive Toolbar */
+    .toolbar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 12px 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    .toolbar-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover {
+      background: var(--bg-color);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* Resume Container (Single-column layout matching PDF) */
+    .resume-container {
+      width: 100%;
+      max-width: 820px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      position: relative;
+    }
+
+    /* Header Section */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 14px;
+      margin-bottom: 6px;
+      width: 100%;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .contact-link:hover {
+      color: var(--accent-hover);
+    }
+
+    .bullet-separator {
+      color: var(--text-main);
+      font-weight: 800;
+    }
+
+    /* Summary Box */
+    .summary-section {
+      background: var(--summary-bg);
+      border: 1.5px solid var(--summary-border);
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .summary-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+      margin-top: 10px;
+      margin-bottom: 14px;
+      width: 100%;
+    }
+
+    /* Experience Items */
+    .exp-item {
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .exp-company {
+      display: flex;
+      align-items: center;
+    }
+
+    .company-logo {
+      display: block;
+      height: auto;
+    }
+
+    .ibm-logo {
+      height: 28px;
+    }
+
+    .arm-logo {
+      height: 18px;
+    }
+
+    .cadence-logo {
+      height: 24px;
+    }
+
+    .exp-location {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .exp-subheader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+
+    .exp-role {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .exp-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .exp-bullets {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .exp-bullets li {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    /* Bold-Italic Highlights inside Experience */
+    .hi-bold-italic {
+      font-weight: 700;
+      font-style: italic;
+    }
+
+    /* Education Table */
+    .edu-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+
+    .edu-table th, .edu-table td {
+      padding: 10px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .edu-table th {
+      border-bottom: 2px solid var(--accent);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      text-transform: capitalize;
+    }
+
+    .edu-table td {
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    .edu-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .edu-degree {
+      font-weight: 700;
+    }
+
+    .edu-year {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* Thesis Section */
+    .thesis-item {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .thesis-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .thesis-title {
+      font-weight: 800;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      text-transform: uppercase;
+      width: 75%;
+      line-height: 1.4;
+    }
+
+    .thesis-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .thesis-guide {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .thesis-doc {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .thesis-link {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .thesis-bullets {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .thesis-bullets li {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    /* Skills Section */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+
+    .skills-table td {
+      padding: 12px 10px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .skills-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .skill-cat {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      width: 25%;
+      padding-right: 15px;
+    }
+
+    .skill-items {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      width: 75%;
+      line-height: 1.5;
+    }
+
+    .skill-bullet {
+      color: var(--accent);
+      margin: 0 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Awards Section */
+    .awards-list {
+      padding-left: 20px;
+      list-style-type: disc;
+      width: 100%;
+    }
+
+    .awards-list > li {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      text-align: justify;
+      line-height: 1.45;
+    }
+
+    .patents-container {
+      list-style-type: none;
+      padding-left: 15px;
+      margin-top: 8px;
+    }
+
+    .patent-item {
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+
+    /* Page Break for Print */
+    .page-break {
+      display: none;
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .resume-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .page-break {
+        display: block;
+        page-break-before: always;
+        break-before: page;
+      }
+    }
+  </style>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeText = document.getElementById('theme-text');
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        themeText.textContent = 'Dark Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeText.textContent = 'Light Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-text').textContent = 'Light Mode';
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Interactive Web Toolbar -->
+  <div class="toolbar no-print">
+    <div class="toolbar-title">
+      <span style="font-weight: 700; letter-spacing: 0.02em; color: var(--accent);">KETUL PATEL</span>
+      <span style="color: var(--text-muted); margin: 0 8px;">|</span>
+      <span style="color: var(--text-main); font-weight: 500;">Functional Verification Engineer & AI-DV Pioneer</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn" id="btn-theme" onclick="toggleTheme()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span id="theme-text">Dark Mode</span>
+      </button>
+      <button class="btn btn-primary" onclick="window.print()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+        <span>Print / Save PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Resume Container -->
+  <div class="resume-container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <h1>KETUL PATEL</h1>
+      <div class="contact-info">
+        <a href="mailto:ketulpatel94@gmail.com" class="contact-link">ketulpatel94@gmail.com</a>
+        <span class="bullet-separator">&bull;</span>
+        <a href="https://linkedin.com/in/ketulpatel94" target="_blank" class="contact-link">linkedin.com/in/ketulpatel94</a>
+        <span class="bullet-separator">&bull;</span>
+        <span>+91-815-4836-723</span>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <div class="summary-section">
+      <div class="summary-title">Summary</div>
+      Functional Verification Engineer with extensive expertise across CPU cores, distributed interrupt controllers, and AI/ML-driven verification frameworks. I lead the full silicon verification lifecycle—from early microarchitectural analysis and C++ reference modeling to SV-UVM testbench development, regression triaging, and pre-silicon coverage closure. I am leveraging agentic coding methodologies and LLMs to pioneer next-generation verification automation, autonomous triaging including holding two patents for ML-driven coverage-directed test template generation and regression optimization. My experience includes owning core-level verification for high-performance units (including IBM zSystems Instruction Fetch and Branch Prediction pipelines), validating ARM GICv3/v4 architectures, and deploying custom AI agents that identify testbench escapes with 85%–87% accuracy and boost overall verification efficiency by 30%.
+    </div>
+
+    <!-- EXPERIENCE -->
+    <section>
+      <h2 class="section-title">Experience</h2>
+      
+      <!-- IBM -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company"><img src="logo_ibm.png" alt="IBM" class="company-logo ibm-logo"></div>
+          <div class="exp-location">Bengaluru, India</div>
+        </div>
+        <div class="exp-subheader">
+          <div class="exp-role">Functional Verification Engineer</div>
+          <div class="exp-date">JULY 2022 - PRESENT</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Contributed to test planning and owned functional verification for <span class="hi-bold-italic">z18 and z17 (Telum II) Instruction Fetch and Branch Prediction (IFB)</span> unit using C++ and IBM's Fusion-based methodology.</li>
+          <li>Owned verification for key microarchitectural enhancements, including BTB2 prefetching, OSC load/store dependency prediction, and restructured BTB fields.</li>
+          <li>Design and Patented two AI-driven DV Coverage frameworks: an autonomous LLM-based test generation engine and an ML-based regression optimizer that cut compute costs by 25%.</li>
+          <li>Deployed custom Python ML/RAG agents and the proprietary <span class="hi-bold-italic">IBM BOB Agentic AI</span> tool for waveform analysis (FSDB/VCD), catching escapes with 85%–87% accuracy and improving triage by 30%.</li>
+          <li>Owned core-level regression triaging, bug fixing, and pre-silicon coverage closure for z18 tapeouts to guarantee robust pre-silicon functional and architectural compliance.</li>
+        </ul>
+      </div>
+
+      <!-- ARM -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company"><img src="logo_arm.png" alt="arm" class="company-logo arm-logo"></div>
+          <div class="exp-location">Bengaluru, India</div>
+        </div>
+        <div class="exp-subheader">
+          <div class="exp-role">Architecture Verification Engineer</div>
+          <div class="exp-date">JULY 2019 - JULY 2022</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed and deployed advanced architectural features for Trickbox VIP and reference testbenches using SystemVerilog and UVM (SV-UVM).</li>
+          <li>Developed C-based architecture verification test suites for GICv3.3 models, achieving 100% test coverage and successful release closures.</li>
+          <li>Triaged and resolved regression failures across AArch32/64 Architecture Verification Suites (AVS) using Arm's proprietary val_report validation tools.</li>
+          <li>Led the comprehensive database migration of AArch32 and AArch64 validation suites to the proprietary TESTDBv2 framework, architecting selection rules to preserve historical coverage integrity.</li>
+          <li>Optimized runtime regression filters, tracked hardware bugs, and developed Python/Perl scripts to automate daily validation flows.</li>
+        </ul>
+      </div>
+
+      <!-- CADENCE -->
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-company"><img src="logo_cadence.png" alt="c&amacr;dence" class="company-logo cadence-logo"></div>
+          <div class="exp-location">Bengaluru, India</div>
+        </div>
+        <div class="exp-subheader">
+          <div class="exp-role">Hardware Design Intern (Summer Internship)</div>
+          <div class="exp-date">JUNE 2018 - JULY 2018</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Gained hands-on training in hardware logic design, digital functional verification, and RTL synthesis, utilizing Cadence EDA tools including <span class="hi-bold-italic">Incisive, Genus, and SimVision</span>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section>
+      <h2 class="section-title">Education</h2>
+      <table class="edu-table">
+        <thead>
+          <tr>
+            <th style="width: 35%;">Degree</th>
+            <th style="width: 50%;">University/Institute</th>
+            <th style="width: 15%; text-align: right;">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="edu-degree">M. Tech. (ICT - VLSI and Embedded Systems)</span></td>
+            <td>Dhirubhai Ambani Institute of Information and Communication Technology (DA-IICT), Gandhinagar, Gujarat</td>
+            <td class="edu-year">2017 - 2019</td>
+          </tr>
+          <tr>
+            <td><span class="edu-degree">B. Tech. (Electronics and Telecommunication Engineering)</span></td>
+            <td>Institution of Electronics and Telecommunication Engineers (IETE), New Delhi</td>
+            <td class="edu-year">2012 – 2016</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- PAGE BREAK FOR PRINTING -->
+    <div class="page-break"></div>
+
+    <!-- MASTER THESIS -->
+    <section>
+      <h2 class="section-title">Master Thesis</h2>
+      <div class="thesis-item">
+        <div class="thesis-header">
+          <div class="thesis-title">Design and Implementation of Low Power RISC-V Instruction Set Processor for Embedded Systems</div>
+          <div class="thesis-date">MAY 2018 - JUNE 2019</div>
+        </div>
+        <div class="thesis-guide">Guide: Dr. Amit Bhatt, DA-IICT</div>
+        <div class="thesis-doc">
+          Thesis document: <a href="http://drsr.daiict.ac.in/handle/123456789/865" target="_blank" class="thesis-link">http://drsr.daiict.ac.in/handle/123456789/865</a>
+        </div>
+        <ul class="thesis-bullets">
+          <li>Engineered a custom processor optimized for home automation application frameworks.</li>
+          <li>Developed a 32-bit five-stage pipelined architecture integrated with 1 KB LIFO stack memory, a Platform Level Interrupt Controller, and Wishbone bus interconnects.</li>
+          <li>Architected the PLIC to manage interrupt service routine execution for 32 maskable and single non-maskable interrupt sources.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <h2 class="section-title">Skills</h2>
+      <table class="skills-table">
+        <tbody>
+          <tr>
+            <td class="skill-cat">Verification Methodologies</td>
+            <td class="skill-items">
+              UVM (SystemVerilog) <span class="skill-bullet">&#9679;</span> C/C++ based verification <span class="skill-bullet">&#9679;</span> C++ & Fusion-based verification (IBM) <span class="skill-bullet">&#9679;</span> cocotb (Python-based framework) <span class="skill-bullet">&#9679;</span> Coverage-Driven Verification (CDV) <span class="skill-bullet">&#9679;</span> Reference Modeling <span class="skill-bullet">&#9679;</span> Waveform Triaging <span class="skill-bullet">&#9679;</span> Regression Optimization <span class="skill-bullet">&#9679;</span> AI Agent-Based EDA Frameworks
+            </td>
+          </tr>
+          <tr>
+            <td class="skill-cat">CPU & System Architectures</td>
+            <td class="skill-items">
+              IBM zSystems Core (IFB Unit) <span class="skill-bullet">&#9679;</span> ARM v8-A/v9-A Core Architectures <span class="skill-bullet">&#9679;</span> ARM AArch64 (Application & System Level) <span class="skill-bullet">&#9679;</span> ARM GICv3/v4/v4.1 System Architectures <span class="skill-bullet">&#9679;</span> RISC-V ISA <span class="skill-bullet">&#9679;</span> Digital System Architecture
+            </td>
+          </tr>
+          <tr>
+            <td class="skill-cat">Programming Languages</td>
+            <td class="skill-items">
+              SystemVerilog <span class="skill-bullet">&#9679;</span> C++ (IBM Fusion Methodology) <span class="skill-bullet">&#9679;</span> C <span class="skill-bullet">&#9679;</span> Verilog <span class="skill-bullet">&#9679;</span> VHDL <span class="skill-bullet">&#9679;</span> ARM Assembly <span class="skill-bullet">&#9679;</span> Python (ML/RAG) <span class="skill-bullet">&#9679;</span> Perl <span class="skill-bullet">&#9679;</span> Shell (Bash/Tcl)
+            </td>
+          </tr>
+          <tr>
+            <td class="skill-cat">EDA & Simulation Tools</td>
+            <td class="skill-items">
+              Synopsys VCS & Verdi <span class="skill-bullet">&#9679;</span> Cadence Incisive & SimVision <span class="skill-bullet">&#9679;</span> Cadence Genus <span class="skill-bullet">&#9679;</span> IBM Internal Tools (Mesa, Nexa, CDG, RTBS) <span class="skill-bullet">&#9679;</span> Arm val_report
+            </td>
+          </tr>
+          <tr>
+            <td class="skill-cat">AI-Driven DV Automation</td>
+            <td class="skill-items">
+              LLM-based autonomous test generation <span class="skill-bullet">&#9679;</span> ML regression optimization <span class="skill-bullet">&#9679;</span> RAG-based automated debugging <span class="skill-bullet">&#9679;</span> Waveform anomaly detection
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- AWARDS AND ACHIEVEMENTS -->
+    <section>
+      <h2 class="section-title">Awards and Achievements</h2>
+      <ul class="awards-list">
+        <li>
+          <strong>Intellectual Property & Patents:</strong>
+          <ul class="patents-container">
+            <li class="patent-item">
+              a. Title: <strong>TEST TEMPLATE REDUCTION</strong><br>
+              U.S. Patent Application No.: <strong>US 19/441,411</strong><br>
+              Filing Date: 6th JAN, 2026<br>
+              State: Submitted & Approval Pending
+            </li>
+            <li class="patent-item">
+              b. Title: <strong>COVERAGE-DIRECTED GENERATION WITH FOCUSED PARAMETER TOKEN SELECTION</strong><br>
+              U.S. Patent Application No.: <strong>US 19/443,639</strong><br>
+              Filing Date: 8th JAN, 2026<br>
+              State: Submitted & Approval Pending
+            </li>
+          </ul>
+        </li>
+        <li>Awarded the <strong>Smt. Radhabai Kapre Gold Medal</strong> (2016) for achieving the highest cumulative grade point average (CGPA) in the Bachelor of Technology program.</li>
+        <li>Received the ARM <strong>'Bravo Award'</strong> in recognition of pivotal contributions to the successful migration of the TESTDBv2 infrastructure.</li>
+        <li>Consistently achieved top-tier performance on the Graduate Aptitude Test in Engineering (GATE), securing a ranking in the <strong>95th percentile</strong> in both 2016 and 2017.</li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
